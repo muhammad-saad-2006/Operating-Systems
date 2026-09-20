@@ -59,6 +59,34 @@ int main(int argc, char *argv[]){
             accumulator += memory[operand];
             break;
 
+        case SUBTRACT:
+                accumulator -= memory[operand];
+                break;
+
+        case DIVIDE:
+            accumulator /= memory[operand];
+            break;
+
+        case MULTIPLY:
+            accumulator *= memory[operand];
+            break;
+
+        case BRANCH:
+            instructionCounter = operand;
+            break;
+
+        case BRANCHNEG:
+            if (accumulator < 0){
+                instructionCounter = operand;
+            }
+            break;
+
+        case BRANCHZERO:
+            if (accumulator == 0){
+                instructionCounter = operand;
+            }
+            break;
+
         case HALT:
             return 0;
 
@@ -67,5 +95,4 @@ int main(int argc, char *argv[]){
         }
 
         printf("\n---------------------------------------------\n");
-    }
 }
